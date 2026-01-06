@@ -25,5 +25,15 @@
 
   <canvas id="game"></canvas>
   <script src="main.js"></script>
+  <script>
+  // Chặn chuột phải
+  document.addEventListener("contextmenu", e => e.preventDefault());
+
+  // Chặn kéo ảnh / canvas
+  document.addEventListener("dragstart", e => e.preventDefault());
+
+  // Tự focus để nhận phím khi click
+  window.addEventListener("mousedown", () => window.focus());
+</script>
 </body>
 </html>
