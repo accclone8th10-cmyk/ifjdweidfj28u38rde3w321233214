@@ -2,38 +2,111 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Huyền Vũ Tu Tiên - Hành Trình Khởi Đầu</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div id="ui-layer">
-    <div class="header">
-      <div id="level-display">Cảnh giới: Luyện Khí</div>
-      <div id="state-display">Trạng thái: Đang đứng</div>
-    </div>
-    
-    <div class="stats-box">
-      <div class="label">Linh khí: <span id="spirit-count">0</span></div>
-      <div class="stat-bar"><div id="progress"></div></div>
-      <div id="speed-tag">Linh tốc: +0/s</div>
-    </div>
+  <title>Huyền Vũ Tu Tiên</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <div class="controls-hint">
-      <b>WASD</b>: Di chuyển | <b>Click Chuột</b>: Ngồi thiền | <b>Space</b>: Đột phá
-    </div>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      user-select: none;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle at center, #0b1c2d, #020409);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+    }
+
+    /* Cổng tu tiên */
+    .portal {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      border: 6px solid rgba(79, 172, 254, 0.7);
+      box-shadow:
+        0 0 40px rgba(79,172,254,0.8),
+        inset 0 0 40px rgba(79,172,254,0.5);
+      animation: spin 12s linear infinite;
+      position: relative;
+    }
+
+    .portal::before {
+      content: "";
+      position: absolute;
+      inset: 25px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(79,172,254,0.6), transparent 70%);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes pulse {
+      0%,100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    .ui {
+      position: absolute;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px #4facfe;
+    }
+
+    p {
+      color: #ccc;
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 14px 40px;
+      font-size: 18px;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(90deg, #00f2fe, #4facfe);
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(79,172,254,0.8);
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="portal"></div>
+
+  <div class="ui">
+    <h1>Huyền Vũ Tu Tiên</h1>
+    <p>Một niệm nhập đạo, vạn kiếp tu hành</p>
+    <button onclick="enterGame()">BƯỚC VÀO TU HÀNH</button>
   </div>
 
-  <canvas id="game"></canvas>
-  <script src="main.js"></script>
   <script>
-  // Chặn chuột phải
-  document.addEventListener("contextmenu", e => e.preventDefault());
+    function enterGame() {
+      window.location.href = "game.html";
+    }
 
-  // Chặn kéo ảnh / canvas
-  document.addEventListener("dragstart", e => e.preventDefault());
-
-  // Tự focus để nhận phím khi click
-  window.addEventListener("mousedown", () => window.focus());
-</script>
+    document.addEventListener("contextmenu", e => e.preventDefault());
+  </script>
 </body>
 </html>
