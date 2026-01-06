@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Huyền Vũ Tu Tiên - Chiến Đấu</title>
+  <title>Huyền Vũ Tu Tiên - Thế Giới</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,6 +11,13 @@
       <div id="level-display" class="level-text">Cảnh giới: Luyện Khí</div>
       <div id="state-display" style="color: #00f2fe;">Trạng thái: Tĩnh tọa</div>
     </div>
+
+    <div id="world-menu">
+      <div class="menu-title">THẾ GIỚI</div>
+      <button class="menu-btn active" id="btn-be-quan" onclick="switchMode('BE_QUAN')">Động Phủ (Bế Quan)</button>
+      <button class="menu-btn" id="btn-hanh-tau" onclick="switchMode('HANH_TAU')">Yêu Thú Lâm (Hành Tẩu)</button>
+    </div>
+
     <div class="stats-box">
       <span class="bar-label">Máu (HP)</span>
       <div class="stat-bar"><div id="hp-bar"></div></div>
@@ -18,11 +25,14 @@
       <div class="stat-bar"><div id="progress"></div></div>
       <div id="speed-tag" style="font-size: 12px; color: #00ff88;">+0/s</div>
     </div>
+
     <div class="controls-hint">
-      WASD: Di chuyển | Giữ Chuột: Thiền | Click Quái: Tấn công | SPACE: Đột phá
+      WASD: Di chuyển | Giữ Chuột: Thiền | Space: Đột phá
     </div>
   </div>
+
   <canvas id="game"></canvas>
+
   <script src="main.js"></script>
 </body>
 </html>
