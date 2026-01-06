@@ -2,36 +2,40 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Huyền Vũ Tu Tiên</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Tu Tiên Giới - Fix 100%</title>
+    <style>
+        body { margin: 0; overflow: hidden; background: #000; font-family: sans-serif; }
+        canvas { display: block; }
+        #ui-layer { position: absolute; top: 20px; left: 20px; z-index: 10; pointer-events: none; }
+        .glass-panel { 
+            background: rgba(15, 25, 35, 0.9); border: 1px solid #3498db; 
+            padding: 15px; border-radius: 10px; color: white; width: 250px;
+            pointer-events: auto; box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        .bar-bg { background: #333; height: 10px; border-radius: 5px; margin: 10px 0; overflow: hidden; }
+        .bar-fill { height: 100%; transition: width 0.3s; }
+        .spirit { background: #3498db; box-shadow: 0 0 10px #3498db; }
+        .hp { background: #e74c3c; box-shadow: 0 0 10px #e74c3c; }
+        button { 
+            width: 100%; padding: 10px; cursor: pointer; background: #2980b9; 
+            border: none; color: white; font-weight: bold; border-radius: 5px;
+        }
+        button:hover { background: #3498db; }
+        .gold-text { color: #f1c40f; font-weight: bold; }
+    </style>
 </head>
 <body>
     <div id="ui-layer">
-        <div id="side-panel" class="glass-panel">
-            <div class="panel-header">CÀN KHÔN BẢNG</div>
-            
-            <div class="menu-tabs">
-                <button id="btn-toggle-mode" class="active" onclick="toggleMode()">HÀNH TẨU</button>
-            </div>
-
-            <div class="stat-container">
-                <div class="stat-row">
-                    <span>Cảnh giới:</span>
-                    <span id="display-realm" class="gold-text">Luyện Khí</span>
-                </div>
-                <div class="bar-bg"><div id="progress-bar" class="bar-fill spirit"></div></div>
-
-                <div class="stat-row">
-                    <span>Máu (HP):</span>
-                    <span id="display-state" style="font-size: 11px; color: #00f2fe;">Đang tọa thiền</span>
-                </div>
-                <div class="bar-bg"><div id="hp-bar" class="bar-fill hp"></div></div>
-
-                <div id="speed-tag" class="speed-indicator">+0/s</div>
-            </div>
-            <div class="instruction">
-                <p><b>Phím tắt:</b> SPACE để Đột phá</p>
-            </div>
+        <div class="glass-panel">
+            <h3 style="margin: 0 0 10px 0; text-align: center;">CÀN KHÔN BẢNG</h3>
+            <button id="btn-toggle-mode" onclick="toggleMode()">HÀNH TẨU</button>
+            <hr style="margin: 15px 0; border: 0.5px solid #444;">
+            <div>Cảnh giới: <span id="display-realm" class="gold-text">Luyện Khí</span></div>
+            <div class="bar-bg"><div id="progress-bar" class="bar-fill spirit" style="width: 0%"></div></div>
+            <div>Máu: <span id="hp-text">100/100</span></div>
+            <div class="bar-bg"><div id="hp-bar" class="bar-fill hp" style="width: 100%"></div></div>
+            <div id="speed-tag" style="font-size: 12px; color: #2ecc71;">+0/s</div>
+            <p style="font-size: 11px; color: #bdc3c7; margin-top: 10px;">SPACE: Đột phá | Click: Bắn chiêu</p>
         </div>
     </div>
     <canvas id="game"></canvas>
